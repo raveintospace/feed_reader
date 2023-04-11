@@ -19,7 +19,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
         parseXML()
+    }
+    
+    private func configureTableView(){
+        self.tableView.tableFooterView = UIView() // footer of TV is an empty uiview, shows no empty cells
     }
     
     private func parseXML() {
@@ -47,7 +52,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
+        if segue.identifier == "viewTwo" {
             guard let selectedCell = tableView.indexPathForSelectedRow?.row else { return }
             let selectedPost = posts[selectedCell]
             let detailView = segue.destination as! DetailViewController

@@ -20,4 +20,10 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func goToDetailVC(data: String) {
+        let detailView = DetailViewController.instantiate()
+        detailView.webContent = data
+        navigationController.pushViewController(detailView, animated: true)
+    }
 }

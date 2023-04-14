@@ -53,13 +53,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "viewTwo" {
-            guard let selectedCell = tableView.indexPathForSelectedRow?.row else { return }
-            let selectedPost = posts[selectedCell]
-            let detailView = segue.destination as! DetailViewController
-            detailView.webContent = selectedPost.link
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.goToDetailVC(data: posts[indexPath.row].link)
     }
 }
 
@@ -98,6 +93,5 @@ extension ViewController: XMLParserDelegate {
 }
 
 extension ViewController: CoordinatorDelegate {
-    
 }
 

@@ -42,3 +42,6 @@ extension DetailViewController: WKNavigationDelegate {
         activityIndicator.hidesWhenStopped = true
     }
 }
+
+extension DetailViewController: CoordinatorDelegate {
+}

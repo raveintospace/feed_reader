@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344B407029E99AD20057E5EE /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B406F29E99AD20057E5EE /* CoordinatorDelegate.swift */; };
+		344B407229E99C410057E5EE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B407129E99C410057E5EE /* Coordinator.swift */; };
+		344B407429E99CBD0057E5EE /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B407329E99CBD0057E5EE /* MainCoordinator.swift */; };
 		349B5D1729E473E000FD14A9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349B5D1629E473E000FD14A9 /* Post.swift */; };
 		34B1544F29E17BA600168F30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1544E29E17BA600168F30 /* AppDelegate.swift */; };
 		34B1545129E17BA600168F30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B1545029E17BA600168F30 /* SceneDelegate.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		344B406F29E99AD20057E5EE /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
+		344B407129E99C410057E5EE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		344B407329E99CBD0057E5EE /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		349B5D1629E473E000FD14A9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		34B1544B29E17BA600168F30 /* M3 - Feed Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "M3 - Feed Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34B1544E29E17BA600168F30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +69,9 @@
 				34B1544E29E17BA600168F30 /* AppDelegate.swift */,
 				34B1545029E17BA600168F30 /* SceneDelegate.swift */,
 				34B1545229E17BA600168F30 /* ViewController.swift */,
+				344B406F29E99AD20057E5EE /* CoordinatorDelegate.swift */,
+				344B407129E99C410057E5EE /* Coordinator.swift */,
+				344B407329E99CBD0057E5EE /* MainCoordinator.swift */,
 				34B1546229E17DFD00168F30 /* DetailViewController.swift */,
 				349B5D1629E473E000FD14A9 /* Post.swift */,
 				34B1545429E17BA600168F30 /* Main.storyboard */,
@@ -145,10 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B1545329E17BA600168F30 /* ViewController.swift in Sources */,
+				344B407429E99CBD0057E5EE /* MainCoordinator.swift in Sources */,
 				34B1544F29E17BA600168F30 /* AppDelegate.swift in Sources */,
 				34B1545129E17BA600168F30 /* SceneDelegate.swift in Sources */,
 				34B1546329E17DFD00168F30 /* DetailViewController.swift in Sources */,
 				349B5D1729E473E000FD14A9 /* Post.swift in Sources */,
+				344B407029E99AD20057E5EE /* CoordinatorDelegate.swift in Sources */,
+				344B407229E99C410057E5EE /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

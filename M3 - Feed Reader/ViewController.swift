@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var myLink = String()
     var myName = String()
     
+    var coordinator: MainCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -93,6 +95,9 @@ extension ViewController: XMLParserDelegate {
             posts.append(dataPost)
         }
     }
+}
+
+extension ViewController: CoordinatorDelegate {
     
 }
 

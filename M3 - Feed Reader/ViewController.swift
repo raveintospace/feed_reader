@@ -7,14 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CoordinatorDelegate {
 
     @IBOutlet private weak var tableView: UITableView!
-    
-    var parser: XMLParser = XMLParser()
-    var myTitle = String()
-    var myLink = String()
-    var myName = String()
     
     var dataSource = ObjectDataSource()
     var coordinator: MainCoordinator?
@@ -22,18 +17,32 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        parseXML()
+        configureTableViewDataSource()
+        parseXML(url: "\(Constants.URL.main)\(Constants.EndPoint.feed)")
     }
     
     private func configureTableView(){
         self.tableView.tableFooterView = UIView() // footer of TV is an empty uiview, shows no empty cells
     }
     
-    private func parseXML() {
-        guard let url = URL(string: "\(Constants.URL.main)\(Constants.EndPoint.feed)") else { return }
+    private func configureTableViewDataSource(){
+        self.tableView.dataSource = self.dataSource
+    }
+    
+    // method to serialize our XML
+    private func parseXML(url: String) {
+        guard let url = URL(string: url) else { return }
         guard let parser = XMLParser(contentsOf: url) else { return }
         
-        parser.delegate = self
+        let xmlManager = XMLManager()
+        xmlManager.callBack = { posts in
+            self.dataSource.posts = posts!      // send the data to our dataSource
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        parser.delegate = xmlManager
         parser.parse()
     }
 }
@@ -45,41 +54,3 @@ extension ViewController: UITableViewDelegate {
         coordinator?.goToDetailVC(data: dataSource.posts[indexPath.row].link)
     }
 }
-
-extension ViewController: XMLParserDelegate {
-    
-    // what to do which each element (item) of the xml file
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        myName = elementName
-        if elementName == "item" {
-            // initialize from scratch my class' strings, deleting any previous existing value
-            myTitle = String()
-            myLink = String()
-        }
-    }
-    
-    // clean whitespaces and assign title & link from data
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        if !data.isEmpty {
-            if myName == "title" {
-                myTitle += data
-            } else if myName == "link" {
-                myLink += data
-            }
-        }
-    }
-    
-    // create a Post object with myTitle & myLink as params
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "item" {
-            let dataPost = Post(title: myTitle, link: myLink)
-            dataSource.posts.append(dataPost)
-        }
-    }
-}
-
-extension ViewController: CoordinatorDelegate {
-}
-

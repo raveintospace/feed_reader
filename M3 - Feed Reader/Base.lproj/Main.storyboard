@@ -55,23 +55,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5FH-rP-ERl">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5FH-rP-ERl">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WiJ-69-TG2">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WiJ-69-TG2">
                                 <rect key="frame" x="178" y="408" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.99607843139999996" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZF4-ro-faV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5FH-rP-ERl" firstAttribute="top" secondItem="ZF4-ro-faV" secondAttribute="top" constant="44" id="31I-FC-kdW"/>
+                            <constraint firstItem="5FH-rP-ERl" firstAttribute="centerX" secondItem="WiJ-69-TG2" secondAttribute="centerX" id="32t-9O-krD"/>
+                            <constraint firstItem="5FH-rP-ERl" firstAttribute="leading" secondItem="ZF4-ro-faV" secondAttribute="leading" id="4aN-WN-yNZ"/>
+                            <constraint firstItem="5FH-rP-ERl" firstAttribute="bottom" secondItem="ZF4-ro-faV" secondAttribute="bottom" id="DuH-OL-U90"/>
+                            <constraint firstItem="5FH-rP-ERl" firstAttribute="centerX" secondItem="dZt-Uw-JDI" secondAttribute="centerX" id="Hdd-Y7-jmI"/>
+                            <constraint firstItem="WiJ-69-TG2" firstAttribute="top" secondItem="ZF4-ro-faV" secondAttribute="top" constant="349" id="OZo-ZG-yF2"/>
+                            <constraint firstItem="WiJ-69-TG2" firstAttribute="centerY" secondItem="dZt-Uw-JDI" secondAttribute="centerY" id="vuy-Xi-WLS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mhg-xh-gH5"/>
                     <connections>

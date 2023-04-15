@@ -11,12 +11,12 @@ class ViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     
-    var posts = [Post]()
     var parser: XMLParser = XMLParser()
     var myTitle = String()
     var myLink = String()
     var myName = String()
     
+    var dataSource = ObjectDataSource()
     var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     private func parseXML() {
-        guard let url = URL(string: "https://www.cfeapps.com/feed") else { return }
+        guard let url = URL(string: "\(Constants.URL.main)\(Constants.EndPoint.feed)") else { return }
         guard let parser = XMLParser(contentsOf: url) else { return }
         
         parser.delegate = self
@@ -40,21 +40,9 @@ class ViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
-        let postTitle = posts[indexPath.row].title
-        cell.textLabel?.text = postTitle
-        return cell
-    }
-    
+extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        coordinator?.goToDetailVC(data: posts[indexPath.row].link)
+        coordinator?.goToDetailVC(data: dataSource.posts[indexPath.row].link)
     }
 }
 
@@ -87,7 +75,7 @@ extension ViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             let dataPost = Post(title: myTitle, link: myLink)
-            posts.append(dataPost)
+            dataSource.posts.append(dataPost)
         }
     }
 }

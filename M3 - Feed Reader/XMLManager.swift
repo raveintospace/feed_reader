@@ -1,7 +1,7 @@
 //
 //  XMLManager.swift
 //  M3 - Feed Reader
-//
+//  Parses the data from XML
 //  Created by Uri on 15/4/23.
 //
 
@@ -45,7 +45,7 @@ class XMLManager: NSObject, XMLParserDelegate {
         if elementName == "item" {
             let dataPost = Post(title: myTitle, link: myLink)
             posts.append(dataPost)
-            callBack?(posts)
+            callBack?(posts)        // sends the data (posts) for our dataSource
         }
     }
 }

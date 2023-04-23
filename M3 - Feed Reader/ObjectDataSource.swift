@@ -1,7 +1,7 @@
 //
 //  ObjectDataSource.swift
 //  M3 - Feed Reader
-//  M6 - Data source
+//  M6 - Data source for our tableView
 //  Created by Uri on 15/4/23.
 //
 
